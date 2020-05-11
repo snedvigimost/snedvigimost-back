@@ -45,8 +45,10 @@ coverage = "5.1"
 
 
 # Static and Media Storage
-django-storages = "1.9.1"
+django-storages = {git = "https://github.com/jschneier/django-storages.git"}
 boto3 = "1.13.5"
+dropbox = "^10.1.2"
+django-environ = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
 

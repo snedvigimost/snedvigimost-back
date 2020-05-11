@@ -2,9 +2,15 @@ import os
 from os.path import join
 from distutils.util import strtobool
 import dj_database_url
+import environ
 from configurations import Configuration
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
 
 class Common(Configuration):
 
@@ -214,3 +220,6 @@ class Common(Configuration):
             # Any other parsers
         ),
     }
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    DROPBOX_OAUTH2_TOKEN = env('DROPBOX_OAUTH2_TOKEN')

@@ -5,7 +5,7 @@ class ListingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Listing
-        fields = ('id', 'title', 'address', 'description', 'price', 'sqft',)
+        fields = '__all__'
 
 
 class CreateListingSerializer(serializers.ModelSerializer):
@@ -16,4 +16,4 @@ class CreateListingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Listing
-        fields = ('id',  'title', 'address', 'description', 'price', 'sqft',)
+        fields = '__all__'

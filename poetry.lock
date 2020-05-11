@@ -197,6 +197,14 @@ Django = ">=1.11"
 
 [[package]]
 category = "main"
+description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
+name = "django-environ"
+optional = false
+python-versions = "*"
+version = "0.4.5"
+
+[[package]]
+category = "main"
 description = "Extensions for Django"
 name = "django-extensions"
 optional = false
@@ -258,6 +266,11 @@ google = ["google-cloud-storage (>=1.15.0)"]
 libcloud = ["apache-libcloud"]
 sftp = ["paramiko"]
 
+[package.source]
+reference = "b116e3a235323144cda6d3cc5a5cb27baf076ee2"
+type = "git"
+url = "https://github.com/jschneier/django-storages.git"
+
 [[package]]
 category = "main"
 description = "A django utility that creates unique file names for uploaded files via uuids."
@@ -314,6 +327,18 @@ uritemplate = ">=3.0.0"
 
 [package.extras]
 validation = ["swagger-spec-validator (>=2.1.0)"]
+
+[[package]]
+category = "main"
+description = "Official Dropbox API Client"
+name = "dropbox"
+optional = false
+python-versions = "*"
+version = "10.1.2"
+
+[package.dependencies]
+requests = ">=2.16.2"
+six = ">=1.12.0"
 
 [[package]]
 category = "main"
@@ -927,7 +952,7 @@ python-versions = "*"
 version = "0.1.9"
 
 [metadata]
-content-hash = "f476136b5d366f8de0247e54bec75b13970111a2259061a8605c9049cfcf9ebe"
+content-hash = "2d2502a1a74a53b392b40647a816eca0fbd3dd5d76c17a2d3c30bd7b7c2c6dda"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1032,6 +1057,10 @@ django-cors-headers = [
     {file = "django-cors-headers-3.2.1.tar.gz", hash = "sha256:a5960addecc04527ab26617e51b8ed42f0adab4594b24bb0f3c33e2bd3857c3f"},
     {file = "django_cors_headers-3.2.1-py3-none-any.whl", hash = "sha256:a785b5f446f6635810776d9f5f5d23e6a2a2f728ea982648370afaf0dfdf2627"},
 ]
+django-environ = [
+    {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
+    {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
+]
 django-extensions = [
     {file = "django-extensions-2.2.9.tar.gz", hash = "sha256:2f81b618ba4d1b0e58603e25012e5c74f88a4b706e0022a3b21f24f0322a6ce6"},
     {file = "django_extensions-2.2.9-py2.py3-none-any.whl", hash = "sha256:b19182d101a441fe001c5753553a901e2ef3ff60e8fbbe38881eb4a61fdd17c4"},
@@ -1048,10 +1077,7 @@ django-nose = [
     {file = "django-nose-1.4.6.tar.gz", hash = "sha256:58934a06a6932696e54c9e8af3fab49bf67ca9e9c840ad668cb7f51219808a07"},
     {file = "django_nose-1.4.6-py2.py3-none-any.whl", hash = "sha256:f515d903cfaeda52c7a9198e0c8ed51563e82802b62a4e5fbd056fd830095318"},
 ]
-django-storages = [
-    {file = "django-storages-1.9.1.tar.gz", hash = "sha256:a59e9923cbce7068792f75344ed7727021ee4ac20f227cf17297d0d03d141e91"},
-    {file = "django_storages-1.9.1-py2.py3-none-any.whl", hash = "sha256:3103991c2ee8cef8a2ff096709973ffe7106183d211a79f22cf855f33533d924"},
-]
+django-storages = []
 django-unique-upload = [
     {file = "django-unique-upload-0.2.1.tar.gz", hash = "sha256:78af8e8948a640dc3ef11f16189ae8dfd81293836d991913fbf40bf5111f43a9"},
     {file = "django_unique_upload-0.2.1-py2.py3-none-any.whl", hash = "sha256:a7c7d220072401eb15dda3b1e09747940312acd36a8a57884c732c4644121b4d"},
@@ -1071,6 +1097,11 @@ docutils = [
 drf-yasg = [
     {file = "drf-yasg-1.17.1.tar.gz", hash = "sha256:5572e9d5baab9f6b49318169df9789f7399d0e3c7bdac8fdb8dfccf1d5d2b1ca"},
     {file = "drf_yasg-1.17.1-py2.py3-none-any.whl", hash = "sha256:7d7af27ad16e18507e9392b2afd6b218fbffc432ec8dbea053099a2241e184ff"},
+]
+dropbox = [
+    {file = "dropbox-10.1.2-py2-none-any.whl", hash = "sha256:fddb4d1aa5ff2aba6f41a831deab8a7883b6e284b5e67e759583d40f5dc0d76d"},
+    {file = "dropbox-10.1.2-py3-none-any.whl", hash = "sha256:284285434b41297ab5dea94b07850d53b8470d628283701cc646fe06ea888735"},
+    {file = "dropbox-10.1.2.tar.gz", hash = "sha256:1d0bb2a919da26c46bbd1ba936ae44165385e08f22be64fb634a952a751b4f04"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
