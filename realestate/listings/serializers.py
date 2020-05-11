@@ -1,7 +1,11 @@
 from rest_framework import serializers
+
 from .models import Listing
+from ..images.serializers import ImageSerializer
+
 
 class ListingSerializer(serializers.ModelSerializer):
+    images = ImageSerializer(read_only=True, many=True)
 
     class Meta:
         model = Listing
