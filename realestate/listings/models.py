@@ -8,8 +8,10 @@ from realestate.images.models import Image
 class Listing(models.Model):
   title = models.CharField(max_length=200)
   address = models.CharField(max_length=200)
+  year = models.CharField(max_length=5, null=True)
   description = models.TextField(blank=True)
   price = models.IntegerField(null=True)
+  rooms_count = models.IntegerField(null=True)
   sqft = models.IntegerField(null=True)
   total_area = models.IntegerField(null=True)
   living_area = models.IntegerField(null=True)
