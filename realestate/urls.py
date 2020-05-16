@@ -7,6 +7,7 @@ from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
+from .house_types.views import HouseTypeView
 from .users.views import UserViewSet, UserCreateViewSet
 from .listings.views import ListingViewSet, ListingCreateViewSet
 from rest_framework import permissions
@@ -29,6 +30,7 @@ schema_view = get_schema_view(
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
+router.register(r'house-types', HouseTypeView)
 router.register(r'listings', ListingViewSet)
 router.register(r'listings', ListingCreateViewSet)
 

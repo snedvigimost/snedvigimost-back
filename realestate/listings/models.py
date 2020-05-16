@@ -1,6 +1,7 @@
 from django_filters import rest_framework as filters
 from django.db import models
 
+from realestate.house_types.models import HouseType
 from realestate.images.models import Image
 
 
@@ -10,6 +11,12 @@ class Listing(models.Model):
   description = models.TextField(blank=True)
   price = models.IntegerField(null=True)
   sqft = models.IntegerField(null=True)
+  total_area = models.IntegerField(null=True)
+  living_area = models.IntegerField(null=True)
+  kitchen_area = models.IntegerField(null=True)
+  floor = models.IntegerField(null=True)
+  floor_in_house = models.IntegerField(null=True)
+  type = models.ForeignKey(HouseType, on_delete=models.CASCADE, null=True)
   images = models.ManyToManyField(Image)
 
 

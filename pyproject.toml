@@ -49,6 +49,7 @@ django-storages = {git = "https://github.com/jschneier/django-storages.git"}
 boto3 = "1.13.5"
 dropbox = "^10.1.2"
 django-environ = "^0.4.5"
+Pillow = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 

@@ -34,7 +34,8 @@ class Common(Configuration):
         # Your apps
         'realestate.users',
         'realestate.listings',
-        'realestate.images'
+        'realestate.images',
+        'realestate.house_types'
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
