@@ -8,6 +8,7 @@ from ..users.permissions import IsUserOrReadOnly
 
 
 class ListingViewSet(mixins.RetrieveModelMixin,
+                     mixins.CreateModelMixin,
                      mixins.UpdateModelMixin,
                      mixins.ListModelMixin,
                      viewsets.GenericViewSet):
