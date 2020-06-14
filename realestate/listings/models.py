@@ -8,6 +8,8 @@ from realestate.images.models import Image
 class Listing(models.Model):
     title = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
+    url = models.CharField(max_length=200, null=True)
+    source = models.CharField(max_length=200, null=True)
     publisher_type = models.CharField(max_length=200, null=True)
     year = models.CharField(max_length=5, null=True)
     description = models.TextField(blank=True, null=True)
@@ -23,7 +25,6 @@ class Listing(models.Model):
     images = models.ManyToManyField(Image)
     publication_date = models.DateField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
-
 
 
 class ProductFilter(filters.FilterSet):
