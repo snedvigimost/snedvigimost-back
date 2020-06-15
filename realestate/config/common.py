@@ -12,6 +12,7 @@ env = environ.Env(
 # reading .env file
 environ.Env.read_env()
 
+
 class Common(Configuration):
 
     INSTALLED_APPS = (

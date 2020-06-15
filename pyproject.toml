@@ -21,6 +21,7 @@ dj-database-url = "0.5.0"
 # Model Tools
 django-model-utils = "4.0.0"
 django_unique_upload = "0.2.1"
+django-cacheops = "^5.0"
 
 # Rest apis
 djangorestframework = "3.11.0"
@@ -29,6 +30,7 @@ django-filter = "2.2.0"
 drf-yasg = "^1.17.1"
 djangorestframework-camel-case = "^1.1.2"
 django-cors-headers = "^3.2.1"
+drf-extensions = "^0.6.0"
 
 # Developer Tools
 ipdb = "0.13.2"
@@ -45,7 +47,7 @@ coverage = "5.1"
 
 
 # Static and Media Storage
-django-storages = {git = "https://github.com/jschneier/django-storages.git"}
+django-storages = {path = "../fork/django-storages"}
 boto3 = "1.13.5"
 dropbox = "^10.1.2"
 django-environ = "^0.4.5"
