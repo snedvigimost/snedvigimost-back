@@ -3,8 +3,7 @@ from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
 from .models import Listing, ProductFilter
-from .serializers import CreateListingSerializer, ListingSerializer
-from ..users.permissions import IsUserOrReadOnly
+from .serializers import ListingSerializer
 
 
 class ListingViewSet(mixins.RetrieveModelMixin,
@@ -18,16 +17,6 @@ class ListingViewSet(mixins.RetrieveModelMixin,
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('price',)
+    filterset_fields = ('price', 'is_published')
     filterset_class = ProductFilter
-    permission_classes = (IsUserOrReadOnly,)
-
-
-class ListingCreateViewSet(mixins.CreateModelMixin,
-                           viewsets.GenericViewSet):
-    """
-    Creates user accounts
-    """
-    queryset = Listing.objects.all()
-    serializer_class = CreateListingSerializer
     permission_classes = (AllowAny,)

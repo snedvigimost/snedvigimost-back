@@ -25,6 +25,7 @@ class Listing(models.Model):
     images = models.ManyToManyField(Image)
     publication_date = models.DateField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
+    is_published = models.BooleanField(default=False)
 
 
 class ProductFilter(filters.FilterSet):
@@ -33,4 +34,4 @@ class ProductFilter(filters.FilterSet):
 
     class Meta:
         model = Listing
-        fields = ['price']
+        fields = ['price', 'is_published']

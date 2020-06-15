@@ -4,15 +4,17 @@ from django.urls import path, re_path, include, reverse_lazy
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import RedirectView
-from rest_framework.routers import DefaultRouter
-from rest_framework.authtoken import views
 
-from .house_types.views import HouseTypeView
-from .users.views import UserViewSet, UserCreateViewSet
-from .listings.views import ListingViewSet, ListingCreateViewSet
 from rest_framework import permissions
-from drf_yasg.views import get_schema_view
+from rest_framework.authtoken import views
+from rest_framework.routers import DefaultRouter
+
 from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+from .users.views import UserViewSet, UserCreateViewSet
+from .listings.views import ListingViewSet
+from .house_types.views import HouseTypeView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -32,7 +34,6 @@ router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
 router.register(r'house-types', HouseTypeView)
 router.register(r'listings', ListingViewSet)
-router.register(r'listings', ListingCreateViewSet)
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
