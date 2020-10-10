@@ -1,8 +1,9 @@
-version: '2'
-
+version: "3.8"
 services:
   postgres:
     image: postgres:11.6
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
   web:
     restart: always
     environment:
@@ -15,15 +16,28 @@ services:
                ./manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./:/code
+      - static_volume:/home/app/web/staticfiles
     ports:
-      - "8000:8000"
+      - "4222:8000"
     depends_on:
       - postgres
-  documentation:
-    restart: always
-    build: ./
-    command: "mkdocs serve"
+#  documentation:
+#    restart: always
+#    build: ./
+#    command: "mkdocs serve"
+#    volumes:
+#      - ./:/code
+#    ports:
+#      - "8001:8001"
+  nginx:
+    build: ./nginx
     volumes:
-      - ./:/code
+      - static_volume:/home/app/web/staticfiles
     ports:
-      - "8001:8001"
+      - 1337:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:

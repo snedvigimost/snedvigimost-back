@@ -47,11 +47,13 @@ coverage = "5.1"
 
 
 # Static and Media Storage
-django-storages = {path = "../fork/django-storages"}
 boto3 = "1.13.5"
 dropbox = "^10.1.2"
 django-environ = "^0.4.5"
 Pillow = "^7.1.2"
+newrelic = "^5.14.1"
+psycopg2 = "^2.8.5"
+django-storages = {git = "https://github.com/andriyor/django-storages.git", rev = "fix/dropbox-persist-url"}
 
 [tool.poetry.dev-dependencies]
 

@@ -52,7 +52,8 @@ class Common(Configuration):
     )
 
     CORS_ORIGIN_WHITELIST = [
-        "http://localhost:4888"
+        "http://localhost:4888",
+        "http://127.0.0.1:4222"
     ]
 
     ALLOWED_HOSTS = ["*"]
@@ -67,13 +68,19 @@ class Common(Configuration):
         ('Author', 'andriyorehov@gmail.com'),
     )
 
-    # Postgres
+    # # Postgres
     DATABASES = {
         'default': dj_database_url.config(
             default='postgresql://postgres:18091997@localhost:5432/real',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )
     }
+    # DATABASES = {
+    #     'default': dj_database_url.config(
+    #         default='postgres://postgres:@postgres:5432/postgres',
+    #         conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
+    #     )
+    # }
 
     # General
     APPEND_SLASH = False
@@ -88,9 +95,11 @@ class Common(Configuration):
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.0/howto/static-files/
-    STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
     STATICFILES_DIRS = []
-    STATIC_URL = '/static/'
+    # STATIC_URL = '/static/'
+    # STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
+    STATIC_URL = "/staticfiles/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',

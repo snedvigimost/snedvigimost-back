@@ -21,3 +21,6 @@ Run a command inside the docker container:
 ```bash
 docker-compose run --rm web [command]
 ```
+
+
+http://127.0.0.1:4222/swagger/

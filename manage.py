@@ -4,7 +4,6 @@ import os
 import sys
 
 
-
 def main():
     # SECURITY WARNING: keep the secret key used in production secret!
 
