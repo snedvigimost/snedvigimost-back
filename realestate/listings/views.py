@@ -37,6 +37,6 @@ class ListingViewSet(mixins.RetrieveModelMixin,
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('price', 'is_published')
+    filterset_fields = ('price', 'is_published', 'rooms_count')
     filterset_class = ProductFilter
     permission_classes = (AllowAny,)

@@ -1,4 +1,4 @@
-from django_filters import rest_framework as filters
+from django_filters import rest_framework as filters, BaseInFilter, NumberFilter
 from django.db import models
 
 from realestate.house_types.models import HouseType
@@ -28,10 +28,15 @@ class Listing(models.Model):
     is_published = models.BooleanField(default=False)
 
 
+class NumberInFilter(BaseInFilter, NumberFilter):
+    pass
+
+
 class ProductFilter(filters.FilterSet):
     min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
     max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
+    rooms_count = NumberInFilter(field_name="rooms_count", lookup_expr='in')
 
     class Meta:
         model = Listing
-        fields = ['price', 'is_published']
+        fields = ['price', 'is_published', 'rooms_count']
