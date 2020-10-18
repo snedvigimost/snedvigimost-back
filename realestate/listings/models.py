@@ -35,8 +35,10 @@ class NumberInFilter(BaseInFilter, NumberFilter):
 class ProductFilter(filters.FilterSet):
     min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
     max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
+    min_area = filters.NumberFilter(field_name="total_area", lookup_expr='gte')
+    max_area = filters.NumberFilter(field_name="total_area", lookup_expr='lte')
     rooms_count = NumberInFilter(field_name="rooms_count", lookup_expr='in')
 
     class Meta:
         model = Listing
-        fields = ['price', 'is_published', 'rooms_count']
+        fields = ['price', 'is_published', 'rooms_count', 'total_area']
