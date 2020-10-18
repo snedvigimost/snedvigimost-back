@@ -1,4 +1,4 @@
-from django_filters import rest_framework as filters, BaseInFilter, NumberFilter
+from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter
 from django.db import models
 
 from realestate.house_types.models import HouseType
@@ -38,6 +38,14 @@ class ProductFilter(filters.FilterSet):
     min_area = filters.NumberFilter(field_name="total_area", lookup_expr='gte')
     max_area = filters.NumberFilter(field_name="total_area", lookup_expr='lte')
     rooms_count = NumberInFilter(field_name="rooms_count", lookup_expr='in')
+
+    sorting = OrderingFilter(
+        fields=(
+            ('total_area', 'total_area'),
+            ('price', 'price'),
+            ('publication_date', 'publication_date'),
+        ),
+    )
 
     class Meta:
         model = Listing
