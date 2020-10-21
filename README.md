@@ -24,3 +24,8 @@ docker-compose run --rm web [command]
 
 
 http://127.0.0.1:4222/swagger/
+
+python manage.py startapp countries
+python manage.py makemigrations 
+python manage.py migrate
+ 

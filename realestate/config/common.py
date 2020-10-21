@@ -4,6 +4,7 @@ from distutils.util import strtobool
 import dj_database_url
 import environ
 from configurations import Configuration
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env = environ.Env(
     # set casting, default value
@@ -14,7 +15,6 @@ environ.Env.read_env()
 
 
 class Common(Configuration):
-
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',
@@ -23,11 +23,10 @@ class Common(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-
         # Third party apps
-        'rest_framework',            # utilities for rest apis
+        'rest_framework',  # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
-        'django_filters',            # for filtering rest endpoints
+        'django_filters',  # for filtering rest endpoints
         'drf_yasg',
         'django_extensions',
         'corsheaders',
@@ -36,7 +35,10 @@ class Common(Configuration):
         'realestate.users',
         'realestate.listings',
         'realestate.images',
-        'realestate.house_types'
+        'realestate.house_types',
+        'realestate.countries',
+        'realestate.districts',
+        'realestate.streets',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -71,6 +73,7 @@ class Common(Configuration):
     # # Postgres
     DATABASES = {
         'default': dj_database_url.config(
+            # engine='django.contrib.gis.db.backends.postgis',
             default='postgresql://postgres:18091997@localhost:5432/real',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )

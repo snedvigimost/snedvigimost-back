@@ -15,6 +15,9 @@ from drf_yasg.views import get_schema_view
 from .users.views import UserViewSet, UserCreateViewSet
 from .listings.views import ListingViewSet
 from .house_types.views import HouseTypeView
+from .countries.views import CountryView
+from .districts.views import DistrictsView
+from .streets.views import StreetsView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -34,6 +37,9 @@ router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
 router.register(r'house-types', HouseTypeView)
 router.register(r'listings', ListingViewSet)
+router.register(r'countries', CountryView)
+router.register(r'districts', DistrictsView)
+router.register(r'streets', StreetsView)
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),

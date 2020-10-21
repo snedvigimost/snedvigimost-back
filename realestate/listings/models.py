@@ -1,6 +1,7 @@
-from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter
+from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter, ModelChoiceFilter
 from django.db import models
 
+from realestate.districts.models import Districts
 from realestate.house_types.models import HouseType
 from realestate.images.models import Image
 
@@ -26,6 +27,7 @@ class Listing(models.Model):
     publication_date = models.DateField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
     is_published = models.BooleanField(default=False)
+    district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
 
 
 class NumberInFilter(BaseInFilter, NumberFilter):
@@ -38,6 +40,7 @@ class ProductFilter(filters.FilterSet):
     min_area = filters.NumberFilter(field_name="total_area", lookup_expr='gte')
     max_area = filters.NumberFilter(field_name="total_area", lookup_expr='lte')
     rooms_count = NumberInFilter(field_name="rooms_count", lookup_expr='in')
+    district = ModelChoiceFilter(queryset=Districts.objects.all())
 
     sorting = OrderingFilter(
         fields=(
