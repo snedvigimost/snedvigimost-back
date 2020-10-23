@@ -15,6 +15,7 @@ class Streets(Model):
 
 class StreetFilter(filters.FilterSet):
     name = filters.CharFilter(field_name="name", lookup_expr='contains')
+    district = filters.ModelChoiceFilter(queryset=Districts.objects.all())
 
     class Meta:
         model = Streets

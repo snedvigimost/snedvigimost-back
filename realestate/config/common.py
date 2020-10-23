@@ -39,6 +39,7 @@ class Common(Configuration):
         'realestate.countries',
         'realestate.districts',
         'realestate.streets',
+        'realestate.micro_districts',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
