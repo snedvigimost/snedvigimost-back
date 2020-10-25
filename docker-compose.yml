@@ -1,42 +1,45 @@
-version: "3.8"
+version: "3.6"
 services:
-  postgres:
-    image: postgres:11.6
+  db:
+    image: postgres:12.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-  web:
-    restart: always
-    environment:
-      - DJANGO_SECRET_KEY=local
-    image: web
-    build: ./
-    command: >
-      bash -c "python wait_for_postgres.py &&
-               ./manage.py migrate &&
-               ./manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./:/code
-      - static_volume:/home/app/web/staticfiles
     ports:
-      - "4222:8000"
-    depends_on:
-      - postgres
-#  documentation:
+      - "5432:5432"
+    env_file: ./realestate/config/.env
+#  web:
 #    restart: always
+#    environment:
+#      - DJANGO_SECRET_KEY=local
+#    image: web
 #    build: ./
-#    command: "mkdocs serve"
+#    command: >
+#      bash -c "python wait_for_postgres.py &&
+#               ./manage.py migrate &&
+#               ./manage.py runserver 0.0.0.0:8000"
 #    volumes:
 #      - ./:/code
+#      - static_volume:/home/app/web/staticfiles
 #    ports:
-#      - "8001:8001"
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/home/app/web/staticfiles
-    ports:
-      - 1337:80
-    depends_on:
-      - web
+#      - "4222:8000"
+#    depends_on:
+#      - db
+  #  documentation:
+  #    restart: always
+  #    build: ./
+  #    command: "mkdocs serve"
+  #    volumes:
+  #      - ./:/code
+  #    ports:
+  #      - "8001:8001"
+#  nginx:
+#    build: ./nginx
+#    volumes:
+#      - static_volume:/home/app/web/staticfiles
+#    ports:
+#      - 1337:80
+#    depends_on:
+#      - web
 
 volumes:
   postgres_data:

@@ -19,6 +19,7 @@ from .countries.views import CountryView
 from .districts.views import DistrictsView
 from .streets.views import StreetsView
 from .micro_districts.views import MicroDistrictsView
+from .layout.views import LayoutsView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -42,6 +43,7 @@ router.register(r'countries', CountryView)
 router.register(r'districts', DistrictsView)
 router.register(r'streets', StreetsView)
 router.register(r'micro_districts', MicroDistrictsView)
+router.register(r'layouts', LayoutsView)
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),

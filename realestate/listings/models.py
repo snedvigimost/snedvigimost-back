@@ -4,6 +4,9 @@ from django.db import models
 from realestate.districts.models import Districts
 from realestate.house_types.models import HouseType
 from realestate.images.models import Image
+from realestate.layout.models import Layout
+from realestate.micro_districts.models import MicroDistricts
+from realestate.streets.models import Streets
 
 
 class Listing(models.Model):
@@ -28,6 +31,9 @@ class Listing(models.Model):
     phone_number = models.CharField(max_length=200, null=True)
     is_published = models.BooleanField(default=False)
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
+    micro_district = models.ForeignKey(MicroDistricts, on_delete=models.CASCADE, null=True)
+    street = models.ForeignKey(Streets, on_delete=models.CASCADE, null=True)
+    layout = models.ForeignKey(Layout, on_delete=models.CASCADE, null=True)
 
 
 class NumberInFilter(BaseInFilter, NumberFilter):

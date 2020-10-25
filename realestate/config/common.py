@@ -40,6 +40,7 @@ class Common(Configuration):
         'realestate.districts',
         'realestate.streets',
         'realestate.micro_districts',
+        'realestate.layout',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -71,20 +72,21 @@ class Common(Configuration):
         ('Author', 'andriyorehov@gmail.com'),
     )
 
-    # # Postgres
+    # Postgres
     DATABASES = {
-        'default': dj_database_url.config(
-            # engine='django.contrib.gis.db.backends.postgis',
-            default='postgresql://postgres:18091997@localhost:5432/real',
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('POSTGRES_DB'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+            'HOST': os.getenv('DJANGO_DATABASE_HOST'),
+            'PORT': os.getenv('DJANGO_DATABASE_PORT'),
+            'CONN_MAX_AGE': os.getenv('CONN_MAX_AGE', 60),
+            'OPTIONS': {
+                'connect_timeout': 10,
+            },
+        }
     }
-    # DATABASES = {
-    #     'default': dj_database_url.config(
-    #         default='postgres://postgres:@postgres:5432/postgres',
-    #         conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-    #     )
-    # }
 
     # General
     APPEND_SLASH = False
