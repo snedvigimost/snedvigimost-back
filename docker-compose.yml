@@ -7,23 +7,22 @@ services:
     ports:
       - "5432:5432"
     env_file: ./realestate/config/.env
-#  web:
-#    restart: always
-#    environment:
-#      - DJANGO_SECRET_KEY=local
-#    image: web
-#    build: ./
-#    command: >
-#      bash -c "python wait_for_postgres.py &&
-#               ./manage.py migrate &&
-#               ./manage.py runserver 0.0.0.0:8000"
-#    volumes:
-#      - ./:/code
-#      - static_volume:/home/app/web/staticfiles
-#    ports:
-#      - "4222:8000"
-#    depends_on:
-#      - db
+  web:
+    restart: always
+    environment:
+      - DJANGO_SECRET_KEY=local
+    image: web
+    build: ./
+    command: >
+      bash -c "python wait_for_postgres.py &&
+               ./manage.py migrate &&
+               ./manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./:/code
+    ports:
+      - "4222:8000"
+    depends_on:
+      - db
   #  documentation:
   #    restart: always
   #    build: ./

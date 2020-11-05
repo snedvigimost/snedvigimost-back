@@ -29,3 +29,7 @@ python manage.py startapp countries
 python manage.py makemigrations 
 python manage.py migrate
  
+https://dephell.readthedocs.io/cmd-deps-convert.html
+
+docker-compose run web bash
+python manage.py loaddata db2.json
