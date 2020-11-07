@@ -57,7 +57,8 @@ class Common(Configuration):
 
     CORS_ORIGIN_WHITELIST = [
         "http://localhost:4888",
-        "http://127.0.0.1:4222"
+        "http://127.0.0.1:4222",
+        "http://188.166.80.5",
     ]
 
     ALLOWED_HOSTS = ["*"]
