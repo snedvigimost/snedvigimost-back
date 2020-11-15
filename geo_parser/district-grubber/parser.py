@@ -17,4 +17,4 @@ def get_districts():
         return districts
 
 
-# print(get_districts())
+print(get_districts())

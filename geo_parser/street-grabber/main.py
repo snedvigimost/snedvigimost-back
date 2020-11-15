@@ -16,7 +16,7 @@ country.save()
 
 for street in get_streets():
     try:
-        district = Districts.objects.get(name=street.district)
+        district = Districts.objects.get(name__contains=street.district)
         street = Streets(name=street.street, district_id=district.id)
         street.save()
     except Districts.DoesNotExist:
@@ -24,3 +24,6 @@ for street in get_streets():
         district.save()
         street = Streets(name=street.street, district_id=district.id)
         street.save()
+
+
+# print(get_streets())
