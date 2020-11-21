@@ -4,6 +4,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_extensions.decorators import paginate
+from rest_framework_gis.filters import InBBoxFilter
 
 from .models import Listing, ProductFilter
 from .serializers import ListingSerializer
@@ -36,7 +37,9 @@ class ListingViewSet(mixins.RetrieveModelMixin,
     """
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('price', 'is_published', 'rooms_count')
+    filter_backends = (filters.DjangoFilterBackend, InBBoxFilter)
+    filterset_fields = ('price', 'is_published', 'rooms_count', 'location')
     filterset_class = ProductFilter
+    bbox_filter_field = 'location'
     permission_classes = (AllowAny,)
+    bbox_filter_include_overlapping = True  # Optional

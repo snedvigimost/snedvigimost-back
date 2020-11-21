@@ -26,6 +26,7 @@ class Common(Configuration):
         # Third party apps
         'rest_framework',  # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
+        'rest_framework_gis',  # token authentication
         'django_filters',  # for filtering rest endpoints
         'drf_yasg',
         'django_extensions',
@@ -76,7 +77,7 @@ class Common(Configuration):
     # Postgres
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
             'NAME': os.getenv('POSTGRES_DB'),
             'USER': os.getenv('POSTGRES_USER'),
             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),

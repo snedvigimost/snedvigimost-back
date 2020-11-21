@@ -57,6 +57,8 @@ django-storages = {git = "https://github.com/andriyor/django-storages.git", rev 
 drf-flex-fields = "^0.8.6"
 httpx = "^0.16.1"
 parsel = "^1.6.0"
+djangorestframework-gis = "^0.16"
+geojson = "^2.5.0"
 
 [tool.poetry.dev-dependencies]
 

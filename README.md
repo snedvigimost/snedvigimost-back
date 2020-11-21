@@ -24,6 +24,7 @@ docker-compose run --rm web [command]
 
 
 http://127.0.0.1:4222/swagger/
+http://127.0.0.1:4222/admin/
 
 sudo service postgresql stop 
 
@@ -35,3 +36,19 @@ https://dephell.readthedocs.io/cmd-deps-convert.html
 
 docker-compose run web bash
 python manage.py loaddata db2.json
+
+[Django : Transfer data from Sqlite to another database](https://www.shubhamdipt.com/blog/django-transfer-data-from-sqlite-to-another-database/)
+
+python manage.py dumpdata > db.json
+Change the database settings to new database such as of MySQL / PostgreSQL.
+python manage.py migrate
+python manage.py shell 
+Enter the following in the shell
+from django.contrib.contenttypes.models import ContentType
+ContentType.objects.all().delete()
+python manage.py loaddata db.json
+
+from realestate.listings.models import Listing      
+from django.contrib.gis.geos import Point   
+
+kk = Listing.objects.get(pk=1)    
