@@ -42,6 +42,7 @@ class Common(Configuration):
         'realestate.streets',
         'realestate.micro_districts',
         'realestate.layout',
+        'realestate.heating_type',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/

@@ -12,6 +12,8 @@ from rest_framework.routers import DefaultRouter
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
+from .heating_type.views import HeatingTypeView
+from .images.views import ImageView
 from .users.views import UserViewSet, UserCreateViewSet
 from .listings.views import ListingViewSet
 from .house_types.views import HouseTypeView
@@ -44,6 +46,8 @@ router.register(r'districts', DistrictsView)
 router.register(r'streets', StreetsView)
 router.register(r'micro_districts', MicroDistrictsView)
 router.register(r'layouts', LayoutsView)
+router.register(r'heating-type', HeatingTypeView)
+router.register(r'images', ImageView)
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
@@ -52,8 +56,7 @@ urlpatterns = [
                   path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
                   path('admin/', admin.site.urls),
-                  path('api/v1/', include(router.urls)),
-                  path('api/v1/images', include('realestate.images.urls')),
+                  path('', include(router.urls)),
                   path('api-token-auth/', views.obtain_auth_token),
                   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

@@ -1,7 +1,10 @@
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter, ModelChoiceFilter
 from django.contrib.gis.db import models
 
 from realestate.districts.models import Districts
+from realestate.heating_type.models import HeatingType
 from realestate.house_types.models import HouseType
 from realestate.images.models import Image
 from realestate.layout.models import Layout
@@ -25,10 +28,11 @@ class Listing(models.Model):
     kitchen_area = models.IntegerField(null=True)
     floor = models.IntegerField(null=True)
     floor_in_house = models.IntegerField(null=True)
-    type = models.ForeignKey(HouseType, on_delete=models.CASCADE, null=True)
+    house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE, null=True)
+    heating_type = models.ForeignKey(HeatingType, on_delete=models.CASCADE, null=True)
     images = models.ManyToManyField(Image)
-    publication_date = models.DateField(null=True)
-    source_publication_date = models.DateField(null=True)
+    publication_date = models.DateTimeField(null=True)
+    source_publication_date = models.DateTimeField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
     is_published = models.BooleanField(default=False, null=True)
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
@@ -41,7 +45,16 @@ class Listing(models.Model):
         db_table = "listing"
 
 
-# Point
+# [many to many - Django - Cascade deletion in ManyToManyRelation - Stack Overflow](
+# https://stackoverflow.com/questions/3937194/django-cascade-deletion-in-manytomanyrelation)
+
+@receiver(pre_delete, sender=Listing)
+def pre_delete_story(sender, instance, **kwargs):
+    for image in instance.images.all():
+        if image.entries.count() == 1 and instance in image.entries.all():
+            # instance is the only Entry authored by this Author, so delete it
+            image.delete()
+
 
 class NumberInFilter(BaseInFilter, NumberFilter):
     pass
