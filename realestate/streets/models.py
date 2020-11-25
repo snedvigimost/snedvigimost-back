@@ -9,6 +9,9 @@ class Streets(Model):
     name = CharField(null=True, max_length=250)
     district = ForeignKey(Districts, on_delete=models.CASCADE, null=False)
 
+    class Meta:
+        db_table = "street"
+
     def __str__(self):
         return self.name
 

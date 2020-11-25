@@ -1,6 +1,5 @@
-from django.contrib.gis.geos import Point
 from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter, ModelChoiceFilter
-from rest_framework_gis.filters import GeometryFilter, InBBoxFilter
+from django.contrib.gis.db import models
 
 from realestate.districts.models import Districts
 from realestate.house_types.models import HouseType
@@ -8,7 +7,6 @@ from realestate.images.models import Image
 from realestate.layout.models import Layout
 from realestate.micro_districts.models import MicroDistricts
 from realestate.streets.models import Streets
-from django.contrib.gis.db import models
 
 
 class Listing(models.Model):
@@ -30,13 +28,18 @@ class Listing(models.Model):
     type = models.ForeignKey(HouseType, on_delete=models.CASCADE, null=True)
     images = models.ManyToManyField(Image)
     publication_date = models.DateField(null=True)
+    source_publication_date = models.DateField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False, null=True)
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
     micro_district = models.ForeignKey(MicroDistricts, on_delete=models.CASCADE, null=True)
     street = models.ForeignKey(Streets, on_delete=models.CASCADE, null=True)
     layout = models.ForeignKey(Layout, on_delete=models.CASCADE, null=True)
     location = models.PointField(null=True, srid=4326)
+
+    class Meta:
+        db_table = "listing"
+
 
 # Point
 

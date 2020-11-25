@@ -1,10 +1,12 @@
-from django.db import models
 from django.db.models import CharField, Model
 from django_filters import rest_framework as filters
 
 
 class MicroDistricts(Model):
     name = CharField(null=True, max_length=250)
+
+    class Meta:
+        db_table = "micro_district"
 
     def __str__(self):
         return self.name
