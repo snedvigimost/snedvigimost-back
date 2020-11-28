@@ -3,6 +3,8 @@ ENV PYTHONUNBUFFERED 1
 
 # Allows docker to cache installed dependencies between builds
 COPY ./requirements.txt requirements.txt
+RUN apt-get update
+RUN apt-get install gdal-bin -y
 RUN pip install -r requirements.txt
 
 # Adds our application code to the image

@@ -14,12 +14,14 @@ git+https://github.com/andriyor/django-storages.git@fix/dropbox-persist-url#egg=
 django-unique-upload==0.2.1
 djangorestframework==3.11.0
 djangorestframework-camel-case==1.*,>=1.1.2
+djangorestframework-gis==0.*,>=0.16.0
 drf-extensions==0.*,>=0.6.0
 drf-flex-fields==0.*,>=0.8.6
 drf-yasg==1.*,>=1.17.1
 dropbox==10.*,>=10.1.2
 factory-boy==2.12.0
 flake8==3.7.9
+geojson==2.*,>=2.5.0
 gunicorn==20.0.4
 httpx==0.*,>=0.16.1
 ipdb==0.13.2
