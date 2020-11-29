@@ -31,6 +31,9 @@ class Common(Configuration):
         'drf_yasg',
         'django_extensions',
         'corsheaders',
+        # 'modeltranslation',
+        'debug_toolbar',
+        'parler',
 
         # Your apps
         'realestate.users',
@@ -55,7 +58,12 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
     )
+
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
 
     CORS_ORIGIN_WHITELIST = [
         "http://localhost:4888",
@@ -94,21 +102,39 @@ class Common(Configuration):
     # General
     APPEND_SLASH = False
     TIME_ZONE = 'UTC'
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'uk'
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
-    USE_I18N = False
+    USE_I18N = True
     USE_L10N = True
     USE_TZ = True
     LOGIN_REDIRECT_URL = '/'
 
+    gettext = lambda s: s
+    LANGUAGES = (
+        ('uk', gettext('Ukrainian')),
+        ('ru', gettext('Russian')),
+        ('en', gettext('English')),
+    )
+
+    PARLER_LANGUAGES = {
+        None: (
+            {'code': 'uk', },
+            {'code': 'ru', },
+            {'code': 'en', },
+        ),
+        'default': {
+            'fallback': 'uk',  # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+            'hide_untranslated': False,  # the default; let .active_translations() return fallbacks too.
+        }
+    }
+
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.0/howto/static-files/
     STATICFILES_DIRS = []
-    # STATIC_URL = '/static/'
+    STATIC_URL = '/static/'
     # STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
-    STATIC_URL = "/staticfiles/"
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',

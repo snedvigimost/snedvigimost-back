@@ -31,9 +31,13 @@ sudo service postgresql stop
 python manage.py startapp countries
 python manage.py makemigrations 
 python manage.py migrate
+
+https://django-modeltranslation.readthedocs.io/en/latest/commands.html#commands-update-translation-fields
+python manage.py update_translation_fields 
  
 https://dephell.readthedocs.io/cmd-deps-convert.html
 
+scp db.json  root@188.166.80.5:/root/snedvigimost-back
 docker-compose run web bash
 python manage.py loaddata db2.json
 

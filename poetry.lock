@@ -1,4 +1,19 @@
 [[package]]
+name = "ansimarkup"
+version = "1.4.0"
+description = "Produce colored terminal text with an xml-like markup"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+colorama = "*"
+
+[package.extras]
+devel = ["bumpversion (>=0.5.2)", "check-manifest (>=0.35)", "readme-renderer (>=16.0)", "flake8", "pep8-naming"]
+tests = ["tox (>=2.6.0)", "pytest (>=3.0.3)", "pytest-cov (>=2.3.1)"]
+
+[[package]]
 name = "appnope"
 version = "0.1.0"
 description = "Disable App Nap on OS X 10.9"
@@ -148,6 +163,17 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 
 [[package]]
+name = "deprecation"
+version = "2.0.7"
+description = "A library to handle automated deprecations"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+packaging = "*"
+
+[[package]]
 name = "dj-database-url"
 version = "0.5.0"
 description = "Use Database URLs in your Django Application."
@@ -216,6 +242,18 @@ python-versions = ">=3.5"
 Django = ">=1.11"
 
 [[package]]
+name = "django-debug-toolbar"
+version = "3.1.1"
+description = "A configurable set of panels that display various debug information about the current request/response."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+Django = ">=2.2"
+sqlparse = ">=0.2.0"
+
+[[package]]
 name = "django-environ"
 version = "0.4.5"
 description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
@@ -246,6 +284,24 @@ python-versions = ">=3.4"
 Django = ">=1.11"
 
 [[package]]
+name = "django-localized-fields"
+version = "6.1"
+description = "Implementation of localized model fields using PostgreSQL HStore fields."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+deprecation = "2.0.7"
+Django = ">=2.0"
+django-postgres-extra = ">=2.0,<3.0"
+
+[package.extras]
+analysis = ["black (==19.3b0)", "flake8 (==3.7.7)", "autoflake (==1.3)", "autopep8 (==1.4.4)", "isort (==4.3.20)", "sl-docformatter (==1.4)"]
+docs = ["Sphinx (==2.2.0)", "sphinx-rtd-theme (==0.4.3)"]
+test = ["tox (==3.14.3)", "pytest (==5.3.2)", "pytest-django (==3.7.0)", "pytest-cov (==2.8.1)", "dj-database-url (==0.5.0)", "django-autoslug (==1.9.6)", "django-bleach (==0.6.1)", "psycopg2 (==2.8.4)"]
+
+[[package]]
 name = "django-model-utils"
 version = "4.0.0"
 description = "Django model mixins and utilities"
@@ -257,6 +313,18 @@ python-versions = "*"
 Django = ">=2.0.1"
 
 [[package]]
+name = "django-modeltranslation"
+version = "0.16.1"
+description = "Translates Django models using a registration approach."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=2.2"
+six = "*"
+
+[[package]]
 name = "django-nose"
 version = "1.4.6"
 description = "Makes your Django tests simple and snappy"
@@ -266,6 +334,46 @@ python-versions = "*"
 
 [package.dependencies]
 nose = ">=1.2.1"
+
+[[package]]
+name = "django-parler"
+version = "2.2"
+description = "Simple Django model translations without nasty hacks, featuring nice admin integration."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django-parler-rest"
+version = "2.1"
+description = "Multilingual support for django-rest-framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django-parler = ">=1.9.2"
+djangorestframework = ">=3.5"
+
+[[package]]
+name = "django-postgres-extra"
+version = "2.0.2"
+description = "Bringing all of PostgreSQL's awesomeness to Django."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+ansimarkup = "1.4.0"
+Django = ">=2.0"
+enforce = "0.3.4"
+python-dateutil = "2.8.0"
+structlog = ">=19,<=20.1.0"
+
+[package.extras]
+analysis = ["black (==19.3b0)", "flake8 (==3.7.7)", "autoflake (==1.3)", "autopep8 (==1.4.4)", "isort (==4.3.20)", "sl-docformatter (==1.4)"]
+docs = ["Sphinx (==2.2.0)", "sphinx-rtd-theme (==0.4.3)"]
+test = ["psycopg2 (==2.8.4)", "dj-database-url (==0.5.0)", "pytest (==5.3.2)", "pytest-benchmark (==3.2.2)", "pytest-django (==3.7.0)", "pytest-cov (==2.8.1)", "tox (==3.14.0)", "freezegun (==0.3.12)", "coveralls (==1.10.0)", "snapshottest (==0.5)"]
 
 [[package]]
 name = "django-storages"
@@ -391,6 +499,17 @@ python-versions = "*"
 [package.dependencies]
 requests = ">=2.16.2"
 six = ">=1.12.0"
+
+[[package]]
+name = "enforce"
+version = "0.3.4"
+description = "Python 3.5+ library for integration testing and data validation through configurable and optional runtime type hint enforcement."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+wrapt = "*"
 
 [[package]]
 name = "entrypoints"
@@ -920,11 +1039,11 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "python-dateutil"
-version = "2.8.1"
+version = "2.8.0"
 description = "Extensions to the standard Python datetime module"
 category = "main"
 optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [package.dependencies]
 six = ">=1.5"
@@ -1055,6 +1174,23 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
+name = "structlog"
+version = "20.1.0"
+description = "Structured Logging for Python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+
+[package.extras]
+azure-pipelines = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest (>=3.3.0)", "simplejson", "pytest-azurepipelines", "python-rapidjson", "pytest-asyncio"]
+dev = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest (>=3.3.0)", "simplejson", "sphinx", "twisted", "pre-commit", "python-rapidjson", "pytest-asyncio"]
+docs = ["sphinx", "twisted"]
+tests = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest (>=3.3.0)", "simplejson", "python-rapidjson", "pytest-asyncio"]
+
+[[package]]
 name = "text-unidecode"
 version = "1.3"
 description = "The most basic Text::Unidecode port"
@@ -1137,12 +1273,24 @@ category = "main"
 optional = false
 python-versions = "*"
 
+[[package]]
+name = "wrapt"
+version = "1.12.1"
+description = "Module for decorators, wrappers and monkey patching."
+category = "main"
+optional = false
+python-versions = "*"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "55d38f6490713b7752ec2f01b7e946b1974d950412e5aadbb1b28a11776faa19"
+content-hash = "f1dcf5ed207738583fd703e819d03271c6c6f104a64678ba221fc5ae4426ff41"
 
 [metadata.files]
+ansimarkup = [
+    {file = "ansimarkup-1.4.0-py2.py3-none-any.whl", hash = "sha256:06365e3ef89a12734fc408b2449cb4642d5fe2e603e95e7296eff9e98a0fe0b4"},
+    {file = "ansimarkup-1.4.0.tar.gz", hash = "sha256:174d920481416cec8d5a707af542d6fba25a1df1c21d8996479c32ba453649a4"},
+]
 appnope = [
     {file = "appnope-0.1.0-py2.py3-none-any.whl", hash = "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0"},
     {file = "appnope-0.1.0.tar.gz", hash = "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"},
@@ -1233,6 +1381,10 @@ decorator = [
     {file = "decorator-4.4.2-py2.py3-none-any.whl", hash = "sha256:41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760"},
     {file = "decorator-4.4.2.tar.gz", hash = "sha256:e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"},
 ]
+deprecation = [
+    {file = "deprecation-2.0.7-py2.py3-none-any.whl", hash = "sha256:dc9b4f252b7aca8165ce2764a71da92a653b5ffbf7a389461d7a640f6536ecb2"},
+    {file = "deprecation-2.0.7.tar.gz", hash = "sha256:c0392f676a6146f0238db5744d73e786a43510d54033f80994ef2f4c9df192ed"},
+]
 dj-database-url = [
     {file = "dj-database-url-0.5.0.tar.gz", hash = "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163"},
     {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
@@ -1253,6 +1405,10 @@ django-cors-headers = [
     {file = "django-cors-headers-3.2.1.tar.gz", hash = "sha256:a5960addecc04527ab26617e51b8ed42f0adab4594b24bb0f3c33e2bd3857c3f"},
     {file = "django_cors_headers-3.2.1-py3-none-any.whl", hash = "sha256:a785b5f446f6635810776d9f5f5d23e6a2a2f728ea982648370afaf0dfdf2627"},
 ]
+django-debug-toolbar = [
+    {file = "django-debug-toolbar-3.1.1.tar.gz", hash = "sha256:c97921a9cd421d392e7860dc4b464db8e06c8628df4dc58fedab012888c293c6"},
+    {file = "django_debug_toolbar-3.1.1-py3-none-any.whl", hash = "sha256:a1ce0665f7ef47d27b8df4b5d1058748e1f08500a01421a30d35164f38aaaf4c"},
+]
 django-environ = [
     {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
     {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
@@ -1265,13 +1421,28 @@ django-filter = [
     {file = "django-filter-2.2.0.tar.gz", hash = "sha256:c3deb57f0dd7ff94d7dce52a047516822013e2b441bed472b722a317658cfd14"},
     {file = "django_filter-2.2.0-py3-none-any.whl", hash = "sha256:558c727bce3ffa89c4a7a0b13bc8976745d63e5fd576b3a9a851650ef11c401b"},
 ]
+django-localized-fields = [
+    {file = "django-localized-fields-6.1.tar.gz", hash = "sha256:7f26f658732c757b86d817ee6f44ee2b813466ec7919436eda8166f7a27a238c"},
+]
 django-model-utils = [
     {file = "django-model-utils-4.0.0.tar.gz", hash = "sha256:adf09e5be15122a7f4e372cb5a6dd512bbf8d78a23a90770ad0983ee9d909061"},
     {file = "django_model_utils-4.0.0-py2.py3-none-any.whl", hash = "sha256:9cf882e5b604421b62dbe57ad2b18464dc9c8f963fc3f9831badccae66c1139c"},
 ]
+django-modeltranslation = [
+    {file = "django-modeltranslation-0.16.1.tar.gz", hash = "sha256:6e351473ae66c382fe831249aaab1f8b725c7be3914e73036505f758db8e9c88"},
+]
 django-nose = [
     {file = "django-nose-1.4.6.tar.gz", hash = "sha256:58934a06a6932696e54c9e8af3fab49bf67ca9e9c840ad668cb7f51219808a07"},
     {file = "django_nose-1.4.6-py2.py3-none-any.whl", hash = "sha256:f515d903cfaeda52c7a9198e0c8ed51563e82802b62a4e5fbd056fd830095318"},
+]
+django-parler = [
+    {file = "django-parler-2.2.tar.gz", hash = "sha256:51c33e7c0d3ca139d1f40ca4253894121a25d9df18076b8fafa573ab0d440010"},
+]
+django-parler-rest = [
+    {file = "django-parler-rest-2.1.tar.gz", hash = "sha256:6f65d583289a1dacffc0694ca12b667c9ad5e3f027bbf5e9285c9d3dd449007b"},
+]
+django-postgres-extra = [
+    {file = "django-postgres-extra-2.0.2.tar.gz", hash = "sha256:e66b88e30bee3dadf5ba98c58a9c12d369e5de43d6644def62231adb8b443212"},
 ]
 django-storages = []
 django-unique-upload = [
@@ -1309,6 +1480,9 @@ dropbox = [
     {file = "dropbox-10.1.2-py2-none-any.whl", hash = "sha256:fddb4d1aa5ff2aba6f41a831deab8a7883b6e284b5e67e759583d40f5dc0d76d"},
     {file = "dropbox-10.1.2-py3-none-any.whl", hash = "sha256:284285434b41297ab5dea94b07850d53b8470d628283701cc646fe06ea888735"},
     {file = "dropbox-10.1.2.tar.gz", hash = "sha256:1d0bb2a919da26c46bbd1ba936ae44165385e08f22be64fb634a952a751b4f04"},
+]
+enforce = [
+    {file = "enforce-0.3.4-py3-none-any.whl", hash = "sha256:cdb7720e25d0bd7ad2aaf2311197d5a28d4d2afe73ecc2f74b5d28faee3f68f2"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
@@ -1621,8 +1795,8 @@ pyparsing = [
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
 ]
 python-dateutil = [
-    {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
-    {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
+    {file = "python-dateutil-2.8.0.tar.gz", hash = "sha256:c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e"},
+    {file = "python_dateutil-2.8.0-py2.py3-none-any.whl", hash = "sha256:7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb"},
 ]
 pytz = [
     {file = "pytz-2020.1-py2.py3-none-any.whl", hash = "sha256:a494d53b6d39c3c6e44c3bec237336e14305e4f29bbf800b599253057fbb79ed"},
@@ -1718,6 +1892,10 @@ sqlparse = [
     {file = "sqlparse-0.3.1-py2.py3-none-any.whl", hash = "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e"},
     {file = "sqlparse-0.3.1.tar.gz", hash = "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"},
 ]
+structlog = [
+    {file = "structlog-20.1.0-py2.py3-none-any.whl", hash = "sha256:8a672be150547a93d90a7d74229a29e765be05bd156a35cdcc527ebf68e9af92"},
+    {file = "structlog-20.1.0.tar.gz", hash = "sha256:7a48375db6274ed1d0ae6123c486472aa1d0890b08d314d2b016f3aa7f35990b"},
+]
 text-unidecode = [
     {file = "text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93"},
     {file = "text_unidecode-1.3-py2.py3-none-any.whl", hash = "sha256:1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8"},
@@ -1756,4 +1934,7 @@ w3lib = [
 wcwidth = [
     {file = "wcwidth-0.1.9-py2.py3-none-any.whl", hash = "sha256:cafe2186b3c009a04067022ce1dcd79cb38d8d65ee4f4791b8888d6599d1bbe1"},
     {file = "wcwidth-0.1.9.tar.gz", hash = "sha256:ee73862862a156bf77ff92b09034fc4825dd3af9cf81bc5b360668d425f3c5f1"},
+]
+wrapt = [
+    {file = "wrapt-1.12.1.tar.gz", hash = "sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7"},
 ]

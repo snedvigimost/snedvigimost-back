@@ -59,6 +59,12 @@ httpx = "^0.16.1"
 parsel = "^1.6.0"
 djangorestframework-gis = "^0.16"
 geojson = "^2.5.0"
+django-modeltranslation = "^0.16.1"
+django-debug-toolbar = "^3.1.1"
+django-parler = "^2.2"
+django-localized-fields = "^6.1"
+django-postgres-extra = "^2.0.2"
+django-parler-rest = "^2.1"
 
 [tool.poetry.dev-dependencies]
 

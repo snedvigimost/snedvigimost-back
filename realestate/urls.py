@@ -1,3 +1,4 @@
+import debug_toolbar
 from django.conf import settings
 from django.conf.urls import url
 from django.urls import path, re_path, include, reverse_lazy
@@ -56,6 +57,7 @@ urlpatterns = [
                   path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
                   path('admin/', admin.site.urls),
+                  path('__debug__/', include(debug_toolbar.urls)),
                   path('', include(router.urls)),
                   path('api-token-auth/', views.obtain_auth_token),
                   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
