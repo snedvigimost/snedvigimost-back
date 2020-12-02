@@ -69,6 +69,7 @@ class Common(Configuration):
         "http://localhost:4888",
         "http://127.0.0.1:4222",
         "http://188.166.80.5",
+        "http://sn.kiev.ua",
     ]
 
     ALLOWED_HOSTS = ["*"]
