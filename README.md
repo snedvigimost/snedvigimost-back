@@ -36,6 +36,7 @@ https://django-modeltranslation.readthedocs.io/en/latest/commands.html#commands-
 python manage.py update_translation_fields 
  
 https://dephell.readthedocs.io/cmd-deps-convert.html
+dephell deps convert --from=pyproject.toml --to=requirements.txt
 
 scp db.json  root@188.166.80.5:/root/snedvigimost-back
 docker-compose run web bash
