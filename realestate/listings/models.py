@@ -3,6 +3,8 @@ from django.dispatch import receiver
 from django_filters import rest_framework as filters, BaseInFilter, NumberFilter, OrderingFilter, ModelChoiceFilter
 from django.contrib.gis.db import models
 
+from realestate.apartment_condition.models import ApartmentCondition
+from realestate.bathroom_type.models import BathroomType
 from realestate.districts.models import Districts
 from realestate.heating_type.models import HeatingType
 from realestate.house_types.models import HouseType
@@ -30,11 +32,14 @@ class Listing(models.Model):
     floor_in_house = models.IntegerField(null=True)
     house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE, null=True)
     heating_type = models.ForeignKey(HeatingType, on_delete=models.CASCADE, null=True)
+    bathroom_type = models.ForeignKey(BathroomType, on_delete=models.CASCADE, null=True)
+    apartment_condition = models.ForeignKey(ApartmentCondition, on_delete=models.CASCADE, null=True)
     images = models.ManyToManyField(Image)
     publication_date = models.DateTimeField(null=True)
     source_publication_date = models.DateTimeField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
     is_published = models.BooleanField(default=False, null=True)
+    without_commission = models.BooleanField(default=False, null=True)
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
     micro_district = models.ForeignKey(MicroDistricts, on_delete=models.CASCADE, null=True)
     street = models.ForeignKey(Streets, on_delete=models.CASCADE, null=True)

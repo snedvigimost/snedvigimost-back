@@ -1,11 +1,11 @@
 from django.db import models
 
 
-class HeatingType(models.Model):
+class BathroomType(models.Model):
     title = models.CharField(null=True, max_length=100)
 
     class Meta:
-        db_table = "heating_type"
+        db_table = "bathroom_type"
 
     def __str__(self):
         return self.title
