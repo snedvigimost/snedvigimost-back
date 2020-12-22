@@ -12,6 +12,7 @@ from realestate.images.models import Image
 from realestate.layout.models import Layout
 from realestate.micro_districts.models import MicroDistricts
 from realestate.streets.models import Streets
+from realestate.users.models import User
 
 
 class Listing(models.Model):
@@ -35,15 +36,19 @@ class Listing(models.Model):
     bathroom_type = models.ForeignKey(BathroomType, on_delete=models.CASCADE, null=True)
     apartment_condition = models.ForeignKey(ApartmentCondition, on_delete=models.CASCADE, null=True)
     images = models.ManyToManyField(Image)
+    favorites = models.ManyToManyField(User, related_name="listing_favorites")
     publication_date = models.DateTimeField(null=True)
     source_publication_date = models.DateTimeField(null=True)
     phone_number = models.CharField(max_length=200, null=True)
+    view_count = models.IntegerField(null=True)
     is_published = models.BooleanField(default=False, null=True)
     without_commission = models.BooleanField(default=False, null=True)
+    verified = models.BooleanField(default=False, null=True)
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, null=True)
     micro_district = models.ForeignKey(MicroDistricts, on_delete=models.CASCADE, null=True)
     street = models.ForeignKey(Streets, on_delete=models.CASCADE, null=True)
     layout = models.ForeignKey(Layout, on_delete=models.CASCADE, null=True)
+    publisher = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="listing_publisher")
     location = models.PointField(null=True, srid=4326)
 
     class Meta:

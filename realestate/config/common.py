@@ -48,6 +48,7 @@ class Common(Configuration):
         'realestate.heating_type',
         'realestate.bathroom_type',
         'realestate.apartment_condition',
+        'realestate.news',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -69,6 +70,7 @@ class Common(Configuration):
 
     CORS_ORIGIN_WHITELIST = [
         "http://localhost",
+        "https://localhost",
         "http://localhost:4888",
         "http://127.0.0.1:4222",
         "http://188.166.80.5",

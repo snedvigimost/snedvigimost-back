@@ -15,6 +15,7 @@ from drf_yasg.views import get_schema_view
 
 from .heating_type.views import HeatingTypeView
 from .images.views import ImageView
+from .news.views import NewsView
 from .users.views import UserViewSet, UserCreateViewSet
 from .listings.views import ListingViewSet
 from .house_types.views import HouseTypeView
@@ -49,6 +50,7 @@ router.register(r'micro_districts', MicroDistrictsView)
 router.register(r'layouts', LayoutsView)
 router.register(r'heating-type', HeatingTypeView)
 router.register(r'images', ImageView)
+router.register(r'news', NewsView)
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
