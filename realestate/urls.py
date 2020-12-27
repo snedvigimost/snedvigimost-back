@@ -13,6 +13,8 @@ from rest_framework.routers import DefaultRouter
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
+from .apartment_condition.views import ApartmentConditionView
+from .bathroom_type.views import BathroomTypeView
 from .heating_type.views import HeatingTypeView
 from .images.views import ImageView
 from .news.views import NewsView
@@ -46,7 +48,9 @@ router.register(r'listings', ListingViewSet)
 router.register(r'countries', CountryView)
 router.register(r'districts', DistrictsView)
 router.register(r'streets', StreetsView)
-router.register(r'micro_districts', MicroDistrictsView)
+router.register(r'micro-districts', MicroDistrictsView)
+router.register(r'apartment-condition', ApartmentConditionView)
+router.register(r'bathroom-type', BathroomTypeView)
 router.register(r'layouts', LayoutsView)
 router.register(r'heating-type', HeatingTypeView)
 router.register(r'images', ImageView)
