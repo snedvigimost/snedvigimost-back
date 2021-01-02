@@ -10,3 +10,4 @@ class NewsView(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     permission_classes = (IsUserOrReadOnly,)
+    lookup_field = 'slug'

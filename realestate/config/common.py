@@ -34,6 +34,7 @@ class Common(Configuration):
         # 'modeltranslation',
         'debug_toolbar',
         'parler',
+        'drf_multiple_model',
 
         # Your apps
         'realestate.users',
@@ -49,6 +50,7 @@ class Common(Configuration):
         'realestate.bathroom_type',
         'realestate.apartment_condition',
         'realestate.news',
+        'realestate.comments',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/

@@ -1,3 +1,4 @@
+from realestate.comments.views import CommentView
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls import url
@@ -19,7 +20,7 @@ from .heating_type.views import HeatingTypeView
 from .images.views import ImageView
 from .news.views import NewsView
 from .users.views import UserViewSet, UserCreateViewSet
-from .listings.views import ListingViewSet
+from .listings.views import ListingViewSet, ListingsSelectsView
 from .house_types.views import HouseTypeView
 from .countries.views import CountryView
 from .districts.views import DistrictsView
@@ -55,6 +56,8 @@ router.register(r'layouts', LayoutsView)
 router.register(r'heating-type', HeatingTypeView)
 router.register(r'images', ImageView)
 router.register(r'news', NewsView)
+router.register(r'comments', CommentView)
+router.register(r'lising-properties', ListingsSelectsView, basename='LisingProperties')
 
 urlpatterns = [
                   url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
