@@ -1,3 +1,4 @@
+from realestate.taggs.models import Tag
 from realestate.comments.models import Comment
 from django.db import models
 
@@ -14,6 +15,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     like = models.ManyToManyField(User, related_name="news_like", null=True)
+    tags = models.ManyToManyField(Tag, related_name="news_tags", null=True)
     comments = models.ManyToManyField(Comment, related_name="news_comment", null=True)
 
     class Meta:

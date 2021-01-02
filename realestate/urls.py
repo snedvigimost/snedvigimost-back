@@ -1,3 +1,4 @@
+from realestate.taggs.views import TagsView
 from realestate.comments.views import CommentView
 import debug_toolbar
 from django.conf import settings
@@ -57,6 +58,7 @@ router.register(r'heating-type', HeatingTypeView)
 router.register(r'images', ImageView)
 router.register(r'news', NewsView)
 router.register(r'comments', CommentView)
+router.register(r'tags', TagsView)
 router.register(r'lising-properties', ListingsSelectsView, basename='LisingProperties')
 
 urlpatterns = [
