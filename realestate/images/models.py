@@ -8,4 +8,4 @@ class Image(models.Model):
         db_table = "image"
 
     def __str__(self):
-        return self.photo.name
+        return self.photo

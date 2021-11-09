@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('images', '0006_dropbox__'),
+        ('images', '0005_auto_20200614_2019'),
     ]
 
     operations = [

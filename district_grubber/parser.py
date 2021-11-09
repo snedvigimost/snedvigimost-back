@@ -2,7 +2,7 @@ from parsel import Selector
 
 
 def get_districts():
-    with open("ria.html", "r+") as file1:
+    with open("district_grubber/ria.html", "r+") as file1:
         selector = Selector(file1.read())
         current_district = ''
         districts = {}

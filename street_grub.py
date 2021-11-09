@@ -9,21 +9,19 @@ from realestate.countries.models import Country
 from realestate.districts.models import Districts
 from realestate.streets.models import Streets
 
-from parse import get_streets
+from street_grabber.parse import get_streets
 
-country = Country(name="Киев")
-country.save()
+# country = Country(name="Киев")
+# country.save()
 
 for street in get_streets():
-    try:
-        district = Districts.objects.get(name__contains=street.district)
-        street = Streets(name=street.street, district_id=district.id)
+    district = Districts.objects.translated(name__contains=street.district)
+    if district:
+        print(district[0].id)
+        street = Streets(name=street.street, district_id=district[0].id)
         street.save()
-    except Districts.DoesNotExist:
-        district = Districts(name=street.district, country_id=country.id)
+    else:
+        district = Districts(name=street.district, country_id=1)
         district.save()
         street = Streets(name=street.street, district_id=district.id)
         street.save()
-
-
-# print(get_streets())

@@ -14,7 +14,7 @@ from realestate.heating_type.models import HeatingType
 from realestate.house_types.models import HouseType
 from realestate.heating_type.serializers import HeatingTypeSerializer
 from realestate.house_types.serializers import HouseTypeSerializer
-from .serializers import ListingSerializer
+from .serializers import ListingSerializer, CreateListingSerializer
 from ..layout.models import Layout
 
 
@@ -66,3 +66,8 @@ class ListingViewSet(mixins.RetrieveModelMixin,
     bbox_filter_field = 'location'
     permission_classes = (AllowAny,)
     bbox_filter_include_overlapping = True  # Optional
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CreateListingSerializer
+        return ListingSerializer

@@ -11,6 +11,9 @@ Its all about a Weissman score > 5.0. Check out the project's [documentation](ht
 
 # Local Development
 
+poetry env info -p
+poetry run python manage.py runserver 4222 
+
 Start the dev server for local development:
 ```bash
 docker-compose up
@@ -61,3 +64,9 @@ from realestate.listings.models import Listing
 from django.contrib.gis.geos import Point   
 
 kk = Listing.objects.get(pk=1)    
+
+## grubber 
+in order
+poetry run python street_grub.py     
+poetry run python district_grub_main.py
+

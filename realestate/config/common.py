@@ -35,6 +35,7 @@ class Common(Configuration):
         'debug_toolbar',
         'parler',
         'drf_multiple_model',
+        'drf_extra_fields',
 
         # Your apps
         'realestate.users',

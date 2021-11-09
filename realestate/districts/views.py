@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 from rest_framework import viewsets, pagination
 from rest_framework_extensions.decorators import paginate

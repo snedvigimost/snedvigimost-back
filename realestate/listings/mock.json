@@ -1,0 +1,37 @@
+{
+  "type": {
+    "title": "string"
+  },
+  "heatingType": {
+    "title": "string"
+  },
+  "bathroomType": {
+    "title": "string"
+  },
+  "apartmentCondition": {
+    "title": "string"
+  },
+  "title": "string",
+  "address": "string",
+  "url": "string",
+  "source": "string",
+  "publisherType": "string",
+  "year": "1997",
+  "description": "string",
+  "price": 0,
+  "roomsCount": 0,
+  "sqft": 0,
+  "totalArea": 0,
+  "livingArea": 0,
+  "kitchenArea": 0,
+  "floor": 0,
+  "floorInHouse": 0,
+  "publicationDate": "2021-11-09T11:17:43.290Z",
+  "sourcePublicationDate": "2021-11-09T11:17:43.290Z",
+  "phoneNumber": "string",
+  "viewCount": 0,
+  "isPublished": true,
+  "withoutCommission": true,
+  "verified": true,
+  "images": [{"photo": "34"}]
+}

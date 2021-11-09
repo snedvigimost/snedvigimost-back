@@ -6,7 +6,7 @@ Street = namedtuple('Street', ['district', 'street', 'lat', 'long'])
 
 
 def get_streets():
-    with open("result.html", "r+") as file1:
+    with open("street_grabber/result.html", "r+") as file1:
         selector = Selector(file1.read())
         streets = []
         for tr in selector.css('tbody > tr'):
